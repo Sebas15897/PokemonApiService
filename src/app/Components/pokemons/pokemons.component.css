@@ -1,0 +1,22 @@
+.general {
+    display: flex;
+}
+
+.container {
+    width: 40%;
+    margin-left: 20px;
+}
+
+.btn-primary {
+    background-color: #c51f0c;
+    border: 1px solid white;
+}
+
+.table {
+    width: 50%;
+}
+
+.test {
+    margin-top: -710px;
+    padding: 33px;
+}
