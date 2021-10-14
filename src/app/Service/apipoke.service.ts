@@ -6,8 +6,8 @@ export class PokeApi {
     getPoke() {
         return this.http.get<any>(`${this.url}`);
     }
-    getPokemon(id:any) {
-        return this.http.get<any>(this.url + id);
+    getPokemon(name:any) {
+        return this.http.get<any>(this.url + name);
     }
     searchPokemon(name:any) {
         return this.http.get<any>(this.url + name);
