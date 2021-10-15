@@ -1,6 +1,5 @@
 export class Pokes{
     pokes: PokesI[];
-    pokes2 : any;
     pokesd : any;
 }
 

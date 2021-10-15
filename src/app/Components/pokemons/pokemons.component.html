@@ -32,7 +32,7 @@
         <tbody>
             <tr *ngFor="let poke of pokes; let i = index">
                 <td>{{poke['name']}}</td>
-                <td><button (click)="delete(poke['name'])" type="button" class="btn btn-danger">Delete</button></td>
+                <td><button type="button" (click)="deletePoke(poke['name'])" class="btn btn-danger">Delete</button></td>
                 <td><button class="btn btn-primary" (click)="detalle(poke['name'])">Detalles</button></td>
             </tr>
         </tbody>

@@ -3,7 +3,6 @@ import { Pokes, PokesI } from './pokes.models';
 import { PokeApi } from '../Service/apipoke.service';
 import { getDetailsPoke, getPoke, getPokeImage } from './pokes.actions';
 import { tap } from 'rxjs/operators';
-import { StateContextFactory } from '@ngxs/store/src/internal/state-context-factory';
 
 
 @State<Pokes>({
@@ -13,22 +12,12 @@ import { StateContextFactory } from '@ngxs/store/src/internal/state-context-fact
         pokesd: [{
             name: '',
             url: ''
-        }],
-        pokes2: [{
-            name: '',
-            url: ''
         }]
     }
 })
 
 export class PokesStates {
     constructor(private htpp: PokeApi) {}
-    //Selector img
-    @Selector()
-    static loadImg(state: Pokes) {
-        return state.pokes2
-    }
-
     //Selector detalles
     @Selector()
     static loadD(state: Pokes) {
@@ -53,26 +42,7 @@ export class PokesStates {
             })
         )
     }
-    //Obtener img de pokémon
-    @Action(getPokeImage)
-    getImage({getState, setState}: StateContext<Pokes>, {payload}: getPokeImage) {
-        return this.htpp.getPokemon(payload).pipe(
-            tap((res)=> {
-                const state = getState();
-                const pok = {
-                    url : res.sprites.front_default,
-                    name: res.name
-                }
-                console.log(res, "res-->")
-                setState({
-                    ...state,
-                    pokes2: pok
-                })
-            })
-        )
-    }
-
-    //Obtener detalles
+    //Obtener detalles y imagenes
     @Action(getDetailsPoke)
     getD({getState, setState}: StateContext<Pokes>, {payload}: getDetailsPoke) {
         return this.htpp.getPokemon(payload).pipe(
