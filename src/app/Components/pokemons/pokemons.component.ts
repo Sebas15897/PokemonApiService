@@ -6,7 +6,6 @@ import { Pokes } from 'src/app/store/pokes.models';
 import {
   getDetailsPoke,
   getPoke,
-  getPokeImage,
 } from 'src/app/store/pokes.actions';
 
 @Component({
@@ -48,7 +47,6 @@ export class PokemonsComponent implements OnInit {
       this.name = res.name;
     });
   }
-
   deletePoke(name: any) {
     let content = this.pokes.filter((x) => x.name !== name);
     this.pokes = content;

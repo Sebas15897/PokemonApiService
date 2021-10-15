@@ -17,13 +17,13 @@ import { tap } from 'rxjs/operators';
 })
 
 export class PokesStates {
-    constructor(private htpp: PokeApi) {}
+    constructor(private htpp: PokeApi) { }
     //Selector detalles
     @Selector()
     static loadD(state: Pokes) {
         return state.pokesd
     }
-    
+
     //Selector pokes
     @Selector()
     static loadPokes(state: Pokes) {
@@ -31,7 +31,7 @@ export class PokesStates {
     }
     //Obtener pokémon
     @Action(getPoke)
-    getPokes({getState, setState}: StateContext<Pokes>) {
+    getPokes({ getState, setState }: StateContext<Pokes>) {
         return this.htpp.getPoke().pipe(
             tap(res => {
                 const state = getState();
@@ -44,12 +44,12 @@ export class PokesStates {
     }
     //Obtener detalles y imagenes
     @Action(getDetailsPoke)
-    getD({getState, setState}: StateContext<Pokes>, {payload}: getDetailsPoke) {
+    getD({ getState, setState }: StateContext<Pokes>, { payload }: getDetailsPoke) {
         return this.htpp.getPokemon(payload).pipe(
-            tap((res)=> {
+            tap((res) => {
                 const state = getState();
                 const elements = {
-                    url : res.sprites.front_default,
+                    url: res.sprites.front_default,
                     name: res.name
                 }
                 setState({
@@ -60,4 +60,3 @@ export class PokesStates {
         )
     }
 }
-    
